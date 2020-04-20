@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+      
+    $path = public_path('storage/json/state_district_wise.json');    
+    $data=json_decode(file_get_contents($path));
+    
+    return view('welcome',compact('data'));
 });
